@@ -32,11 +32,13 @@ public class BeerServiceRestTemplateImpl implements BeerService {
 
     @Override
     public Optional<BeerDto> getBeerById(UUID uuid){
+        log.debug("==== Attempting to call: "+beerServiceHost + BEER_PATH_V1 + uuid.toString());
         return Optional.ofNullable(restTemplate.getForObject(beerServiceHost + BEER_PATH_V1 + uuid.toString(), BeerDto.class));
     }
 
     @Override
     public Optional<BeerDto> getBeerByUpc(String upc) {
+        log.debug("==== Attempting to call: "+beerServiceHost + BEER_UPC_PATH_V1 + upc);
         return Optional.ofNullable(restTemplate.getForObject(beerServiceHost + BEER_UPC_PATH_V1 + upc, BeerDto.class));
     }
 
